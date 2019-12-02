@@ -3,7 +3,7 @@ CXX=clang++
 CXXFLAGS=-I ../include -g -DLUACALLOUTS 
 ALLOCOBJS=ws_allocate.o ws_util.o
 RELEASEOBJS=ws_release.o ws_util.o
-BOOSTLIBS=-lboost_program_options -lboost_regex -lboost_filesystem -lboost_system -llua5.1
+BOOSTLIBS=-lboost_program_options -lboost_regex -lboost_filesystem -lboost_system -llua-5.1
 
 all: ws_allocate ws_release
 
