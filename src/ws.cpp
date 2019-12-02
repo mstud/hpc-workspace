@@ -197,7 +197,7 @@ void Workspace::allocate(const string name, const bool extensionflag, const int 
               }
               // we allow a user to specify -u -x together, and to extend a workspace if he has rights on the workspace
               if(user_option.length()>0 && (user_option != username) && (getuid() != 0)) {
-                  cerr << "Info: you are not owner of the workspace." << endl;
+                  //cerr << "Info: you are not owner of the workspace." << endl;
                   if(access(wsdir.c_str(), R_OK|W_OK|X_OK)!=0) {
                       cerr << "Info: and you have no permissions to access the workspace, workspace will not be extended." << endl;
                       exit(-1);
@@ -308,11 +308,11 @@ void Workspace::allocate(const string name, const bool extensionflag, const int 
             tuid = pws->pw_uid;
             tgid = pws->pw_gid;
         }
-
-        raise_cap(CAP_CHOWN);
-        if(prefix.length()>0) {  // in case we have a prefix, we change owner of that one
-            chown(wsdir_nopostfix.c_str(), tuid, tgid);
-        }
+  
+        //raise_cap(CAP_CHOWN);
+        //if(prefix.length()>0) {  // in case we have a prefix, we change owner of that one
+        //    chown(wsdir_nopostfix.c_str(), tuid, tgid);
+        //}
 
         if(chown(wsdir.c_str(), tuid, tgid)) {
             lower_cap(CAP_CHOWN, db_uid);
